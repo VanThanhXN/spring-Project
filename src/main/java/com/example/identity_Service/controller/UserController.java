@@ -1,7 +1,9 @@
 package com.example.identity_Service.controller;
 
+import com.example.identity_Service.dto.request.ApiResponse;
 import com.example.identity_Service.dto.request.UserCreationRequest;
 import com.example.identity_Service.dto.request.UserUpdateRequest;
+import com.example.identity_Service.dto.respone.UserRespone;
 import com.example.identity_Service.entity.User;
 import com.example.identity_Service.service.UserService;
 import jakarta.validation.Valid;
@@ -18,8 +20,11 @@ public class UserController {
     private UserService userService;
 
    @PostMapping()
-    public User createUser(@RequestBody @Valid UserCreationRequest user) {
-       return userService.createUser(user);
+   ApiResponse<UserRespone> createUser(@RequestBody @Valid UserCreationRequest user) {
+       ApiResponse<UserRespone> apiResponse = new ApiResponse<>();
+       apiResponse.setResult(userService.createUser(user));
+
+       return apiResponse;
    }
 
    @GetMapping
@@ -28,12 +33,12 @@ public class UserController {
    }
 
    @GetMapping("/{userId}")
-    public User getUser(@PathVariable("userId") String userId) {
+    public UserRespone getUser(@PathVariable("userId") String userId) {
         return userService.getUser(userId);
    }
 
    @PutMapping("/{userId}")
-   public User updateUser(@PathVariable("userId") String userId, @RequestBody UserUpdateRequest request) {
+   public UserRespone updateUser(@PathVariable("userId") String userId, @RequestBody UserUpdateRequest request) {
        return userService.updateUser(userId, request);
    }
 

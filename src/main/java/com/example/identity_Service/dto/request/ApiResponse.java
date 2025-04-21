@@ -1,21 +1,19 @@
 package com.example.identity_Service.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserUpdateRequest {
-
-    private String password;
-    private String firstName;
-    private String lastName;
-    private LocalDate birthDate;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiResponse<T> {
+    int code = 1000;
+     String message;
+     T result;
 
 
 }

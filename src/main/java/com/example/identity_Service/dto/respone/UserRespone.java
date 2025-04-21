@@ -1,9 +1,7 @@
-package com.example.identity_Service.dto.request;
+package com.example.identity_Service.dto.respone;
 
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 
 import java.time.LocalDate;
 
@@ -12,16 +10,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults( level = AccessLevel.PRIVATE)
-public class UserCreationRequest {
-
-    @Size(min = 3, max = 12,message = "USER_NOT_FOUND")
+public class UserRespone {
+     String id;
      String username;
-
-    @Size(min = 6,message = "PASS_NOT_FOUND", max = 20)
      String password;
      String firstName;
      String lastName;
      LocalDate birthDate;
-
 
 }
