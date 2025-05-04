@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/identity-service1
+    url: jdbc:mysql://localhost:3306/identity-service
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,5 +18,6 @@ server:
 
 jwt:
   signerKey : "nSig51PtRJbWH1l5Z1DwmPeMWWnt67ZIJFU4NCs9zXOZHkGoLzhY8LCOZ1IdGz9e"
+#  signerKey : ${signerKey_pass}
 #  servlet:
 #    context-path: /identity

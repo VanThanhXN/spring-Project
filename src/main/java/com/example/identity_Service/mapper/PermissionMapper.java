@@ -1,19 +1,21 @@
 package com.example.identity_Service.mapper;
 
+import com.example.identity_Service.dto.request.PermissionRequest;
 import com.example.identity_Service.dto.request.UserCreationRequest;
 import com.example.identity_Service.dto.request.UserUpdateRequest;
+import com.example.identity_Service.dto.respone.PermissionRespone;
 import com.example.identity_Service.dto.respone.UserRespone;
+import com.example.identity_Service.entity.Permission;
 import com.example.identity_Service.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper {
+public interface PermissionMapper {
+    Permission toPermission(PermissionRequest user);
 
-    User toUser(UserCreationRequest user);
+    PermissionRespone toPermissionRespone(Permission permission);
 
-    UserRespone toUserRespone(User user);
-    @Mapping(target = "roles", ignore = true)
-    void updateUser(@MappingTarget User user, UserUpdateRequest request);
+
 }
